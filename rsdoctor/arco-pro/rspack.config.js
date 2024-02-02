@@ -36,48 +36,44 @@ const config = {
       {
         test: /\.(j|t)s$/,
         exclude: [/[\\/]node_modules[\\/]/],
-        use: {
-          loader: "builtin:swc-loader",
-          options: {
-            sourceMap: false,
-            jsc: {
-              parser: {
-                syntax: "typescript",
-              },
-              externalHelpers: true,
+        loader: "builtin:swc-loader",
+        options: {
+          sourceMap: false,
+          jsc: {
+            parser: {
+              syntax: "typescript",
             },
-            env: {
-              targets: "Chrome >= 48",
-            },
+            externalHelpers: true,
           },
-        }
+          env: {
+            targets: "Chrome >= 48",
+          },
+        },
       },
       {
         test: /\.(j|t)sx$/,
+        loader: "builtin:swc-loader",
         exclude: [/[\\/]node_modules[\\/]/],
-        use: {
-          loader: "builtin:swc-loader",
-          options: {
-            sourceMap: false,
-            jsc: {
-              parser: {
-                syntax: "typescript",
-                tsx: true,
-              },
-              transform: {
-                react: {
-                  runtime: "automatic",
-                  development: !prod,
-                  refresh: !prod,
-                },
-              },
-              externalHelpers: true,
+        options: {
+          sourceMap: false,
+          jsc: {
+            parser: {
+              syntax: "typescript",
+              tsx: true,
             },
-            env: {
-              targets: "Chrome >= 48",
+            transform: {
+              react: {
+                runtime: "automatic",
+                development: !prod,
+                refresh: !prod,
+              },
             },
+            externalHelpers: true,
           },
-        }
+          env: {
+            targets: "Chrome >= 48",
+          },
+        },
       },
       {
         test: /\.png$/,
